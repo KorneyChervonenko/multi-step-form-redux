@@ -1,0 +1,164 @@
+// @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root {
+	@font-face {
+		font-family: 'Ubuntu';
+		src: url('/assets/fonts/Ubuntu-Italic.woff2') format('woff2');
+		font-weight: normal;
+		font-style: italic;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: 'Ubuntu';
+		src: url('/assets/fonts/Ubuntu-Bold.woff2') format('woff2');
+		font-weight: bold;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: 'Ubuntu';
+		src: url('/assets/fonts/Ubuntu-BoldItalic.woff2') format('woff2');
+		font-weight: bold;
+		font-style: italic;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: 'Ubuntu';
+		src: url('/assets/fonts/Ubuntu-MediumItalic.woff2') format('woff2');
+		font-weight: 500;
+		font-style: italic;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: 'Ubuntu';
+		src: url('/assets/fonts/Ubuntu-Regular.woff2') format('woff2');
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: 'Ubuntu';
+		src: url('/assets/fonts/Ubuntu-LightItalic.woff2') format('woff2');
+		font-weight: 300;
+		font-style: italic;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: 'Ubuntu';
+		src: url('/assets/fonts/Ubuntu-Medium.woff2') format('woff2');
+		font-weight: 500;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: 'Ubuntu';
+		src: url('/assets/fonts/Ubuntu-Light.woff2') format('woff2');
+		font-weight: 300;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	& {
+		font-family: 'Ubuntu', serif;
+		font-optical-sizing: auto;
+	}
+}
+
+$mobile-width: 23.4375rem;
+// $tablet-width: 48rem;
+$desktop-width: 59rem;
+
+// --desktop-width: #{$desktop-width};
+$threshold-width: 60rem;
+// @max-width-desktop: 90rem;
+// :root {
+// 	--desktop-width: #{$desktop-width};
+// }
+
+:root {
+	// font-family: 'Bellefair', serif;
+	// font-family: 'Barlow Condensed', serif;
+
+	// font-size: 24px;
+
+	--fs-150: 9.375rem; // 150px
+	--fs-100: 6.25rem; // 100px
+	--fs-80: 5rem; // 80px
+	--fs-56: 3.5rem; // 56px
+	--fs-40: 2.5rem; // 40px
+	--fs-38: 2.38rem; // 38px
+	--fs-32: 2rem; // 32px
+	--fs-28: 1.75rem; // 28px
+	--fs-26: 1.625rem; // 26px
+	--fs-24: 1.5rem; // 24px
+	--fs-22: 1.38rem; // 22px
+	--fs-20: 1.25rem; // 20px
+	--fs-18: 1.125rem; // 18px
+	--fs-16: 1rem; // 16px
+	--fs-15: 0.9375rem; // 15px
+	--fs-14: 0.875rem; // 14px
+	--fs-13: 0.8125rem; // 13px
+	--fs-12: 0.75rem; // 12px
+	--fs-10: 0.625rem; // 10px
+
+	--border-radius-small: 0.3rem;
+	--border-radius-big: 0.5rem;
+
+	// --min-mobile-height: 37.5rem; //41.6875rem;
+	// --min-tablet-height: 50rem; // 64rem;
+	// --min-desktop-height: 50rem; //33.75rem; //56.25rem;
+	// --border-radius-mobile: 0.75rem;
+	// --border-radius-desktop: 0.875rem;
+	// --color-grey: grey;
+}
+
+:root {
+	--Marine-blue: hsl(213, 96%, 18%);
+	--Purplish-blue: hsl(243, 100%, 62%);
+	--Pastel-blue: hsl(228, 100%, 84%);
+	--Light-blue: hsl(206, 94%, 87%);
+	--Strawberry-red: hsl(354, 84%, 57%);
+	--Cool-gray: hsl(231, 11%, 63%);
+	--Light-gray: hsl(229, 24%, 87%);
+	--Magnolia: hsl(217, 100%, 97%);
+	--Alabaster: hsl(231, 100%, 99%);
+	--White: hsl(0, 0%, 100%);
+
+	--error-msg-font-color: var(--Strawberry-red);
+	--header-font-color: var(--Marine-blue);
+	--next-btn-bgcolor: var(--Marine-blue);
+	--confirm-btn-bgcolor: var(--Purplish-blue);
+	--prev-btn-font-hover-color: var(--Marine-blue);
+	--font-color-white: var(--White);
+	--font-color-grey: var(--Cool-gray);
+	--prev-next-btn-bg-color: var(--White);
+	--form-area-bg-color: var(--White);
+	--main-bg-color-desktop: var(--White);
+	--main-bg-color-mobile: var(--Light-gray);
+	--menu-marker-hover-color: var(--Light-blue);
+	--switch-bg-color: var(--Magnolia);
+	// --switch-bg-color: coral;
+}
+
+// button:where(:hover, :focus) {
+// 	cursor: pointer;
+// }
+
+// // mobile
+// @media screen and (width < $tablet-width) {
+// }
+
+// // tablet
+// @media screen and ($tablet-width <= width < $desktop-width) {
+// }
+
+// // desktop
+// @media screen and (width >= $desktop-width) {
+// }

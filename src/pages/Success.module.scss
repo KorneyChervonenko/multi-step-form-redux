@@ -1,0 +1,36 @@
+@use '../styles/_reset.scss';
+@use '../styles/_helpers.scss';
+@use '../styles/_vars.scss' as *;
+
+.success {
+	& > .thanxMessage {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		// mobile
+		@media screen and (width < $threshold-width) {
+			// min-block-size: 2rem;
+		}
+
+		// desktop
+		@media screen and (width >= $threshold-width) {
+			block-size: 100%;
+		}
+
+		& > .icon {
+			// mobile
+			@media screen and (width < $threshold-width) {
+				inline-size: 3.75rem;
+				margin-block-end: 1.5rem;
+			}
+
+			// desktop
+			@media screen and (width >= $threshold-width) {
+				inline-size: 5rem;
+				margin-block-end: 2rem;
+			}
+		}
+	}
+}

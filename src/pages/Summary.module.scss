@@ -1,0 +1,121 @@
+@use '../styles/_reset.scss';
+@use '../styles/_helpers.scss';
+@use '../styles/_vars.scss' as *;
+
+.summary {
+	// background-color: yellow;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	& > .summaryTable {
+		display: flex;
+		flex-direction: column;
+
+		// table-layout: fixed;
+		border-collapse: collapse;
+
+		.tableRow {
+			// background-color: aquamarine;
+
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+
+			// mobile
+			@media screen and (width < $threshold-width) {
+				min-block-size: 2rem;
+			}
+
+			// desktop
+			@media screen and (width >= $threshold-width) {
+				min-block-size: 2.5rem;
+			}
+		}
+
+		& > .tableCaption {
+			text-align: left;
+		}
+
+		& > .tableBody {
+			// background-color: grey;
+			border-radius: var(--border-radius-big);
+			background-color: var(--switch-bg-color);
+			// inline-size: 100%;
+			// mobile
+			@media screen and (width < $threshold-width) {
+				padding: 1rem;
+			}
+
+			// desktop
+			@media screen and (width >= $threshold-width) {
+				padding: 1.5rem;
+			}
+
+			& > .tableRow {
+				// inline-size: 100%;
+				// background-color: aquamarine;
+				// display: flex;
+				// flex-direction: row;
+				// justify-content: space-between;
+				// align-items: center;
+				&:first-of-type {
+					// background-color: aqua;
+					padding-block-end: 1rem;
+					border-block-end-style: solid;
+					border-block-end-width: 0.1rem;
+					border-color: var(--font-color-grey);
+				}
+
+				& > .tableRHplan {
+					// background-color: brown;
+					color: var(--header-font-color);
+					display: flex;
+					flex-direction: column;
+					align-items: flex-start;
+
+					& > .label {
+						// background-color: cadetblue;
+						text-decoration: underline;
+						&:has(input):hover {
+							cursor: pointer;
+						}
+
+						& > .input {
+							display: none;
+						}
+					}
+
+					& + td {
+						// background-color: chocolate;
+						color: var(--header-font-color);
+						font-weight: 600;
+					}
+				}
+			}
+		}
+
+		& > .tableFooter {
+			& > .tableRow {
+				// inline-size: 100%;
+				// mobile
+				@media screen and (width < $threshold-width) {
+					padding-inline: 1rem;
+				}
+
+				// desktop
+				@media screen and (width >= $threshold-width) {
+					padding-inline: 1.5rem;
+				}
+
+				& > td {
+					color: var(--confirm-btn-bgcolor);
+					font-weight: 600;
+					font-size: var(--fs-20);
+				}
+			}
+		}
+	}
+}

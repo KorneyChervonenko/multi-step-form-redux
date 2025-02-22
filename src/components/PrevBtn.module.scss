@@ -1,0 +1,13 @@
+@use '../styles/_reset.scss';
+@use '../styles/_helpers.scss';
+@use '../styles/_vars.scss' as *;
+
+.prevButton {
+	border-style: none;
+	background-color: unset;
+	color: var(--font-color-grey);
+
+	&:where(:hover) {
+		color: var(--prev-btn-font-hover-color);
+	}
+}

@@ -1,0 +1,109 @@
+@use './styles/_reset.scss';
+@use './styles/_helpers.scss';
+@use './styles/_vars.scss' as *;
+
+h2 {
+	inline-size: fit-content;
+	// background-color: chartreuse;
+	color: var(--header-font-color);
+	margin-block-end: 1rem;
+	// mobile
+	@media screen and (width < $threshold-width) {
+		font-size: 1.5rem;
+	}
+
+	// desktop
+	@media screen and (width >= $threshold-width) {
+		font-size: 2rem;
+	}
+}
+
+.plain-text {
+	// background-color: yellow;
+	color: var(--font-color-grey);
+	// mobile
+	@media screen and (width < $threshold-width) {
+		// font-size: 1.5rem;
+	}
+
+	// desktop
+	@media screen and (width >= $threshold-width) {
+		font-size: var(--fs-15);
+	}
+}
+
+.form-area {
+	// background-color: rebeccapurple;
+	background-color: var(--form-area-bg-color);
+
+	// mobile
+	@media screen and (width < $threshold-width) {
+		margin-inline: 1rem;
+		padding-block-start: 2rem;
+		padding-block-end: 2rem;
+		padding-inline: 1.625rem;
+		position: relative;
+		top: -4.625rem;
+		border-radius: var(--border-radius-big);
+	}
+
+	// desktop
+	@media screen and (width >= $threshold-width) {
+		// inline-size: 50%;
+		// inline-size: 100%;
+		// flex: 1;
+		padding-block-start: 2.4rem;
+		padding-block-end: 2.4rem;
+		padding-inline: 6.25rem;
+	}
+
+	& > :where(header, caption) {
+		// mobile
+		@media screen and (width < $threshold-width) {
+			margin-block-end: 1.375rem;
+		}
+
+		// desktop
+		@media screen and (width >= $threshold-width) {
+			margin-block-end: 2rem;
+		}
+	}
+}
+
+.prev-next-buttons {
+	// background-color: coral;
+	background-color: var(--prev-next-btn-bg-color);
+	// margin-top: auto;
+
+	display: flex;
+	flex-direction: row;
+	// justify-content: space-between;
+	align-items: center;
+
+	// mobile
+	@media screen and (width < $threshold-width) {
+		block-size: 4.5rem;
+		padding-inline: 1.625rem;
+	}
+
+	// desktop
+	@media screen and (width >= $threshold-width) {
+		block-size: 7rem;
+		padding-inline: 6.25rem;
+	}
+
+	& > .prev-btn {
+		// justify-self: flex-start;
+		margin-inline-start: 0;
+	}
+
+	& > .next-btn {
+		// background-color: rebeccapurple;
+		// justify-self: flex-end;
+		margin-inline-start: auto;
+	}
+}
+
+.red-border {
+	border-color: var(--error-msg-font-color);
+}

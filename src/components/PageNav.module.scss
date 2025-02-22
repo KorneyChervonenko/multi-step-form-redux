@@ -1,0 +1,87 @@
+@use '../styles/_reset.scss';
+@use '../styles/_helpers.scss';
+@use '../styles/_vars.scss' as *;
+
+.pageMenu {
+	// background-color: aquamarine;
+	display: flex;
+	background-repeat: no-repeat;
+
+	// mobile
+	@media screen and (width < $threshold-width) {
+		inline-size: 100%;
+		block-size: 10.8rem;
+		column-gap: 1rem;
+		padding-block-start: 2rem;
+		flex-direction: row;
+		justify-content: center;
+		background-image: url('../../public/assets/images/bg-sidebar-mobile.svg');
+	}
+
+	// desktop
+	@media screen and (width >= $threshold-width) {
+		min-inline-size: 17.125rem;
+		block-size: 35.625rem;
+		row-gap: 2rem;
+		padding-inline-start: 2rem;
+		padding-block-start: 2rem;
+		flex-direction: column;
+		background-image: url('../../public/assets/images/bg-sidebar-desktop.svg');
+	}
+
+	& > .item {
+		// background-color: coral;
+		inline-size: fit-content;
+		block-size: fit-content;
+
+		& > .pageLink {
+			text-decoration: none;
+			display: flex;
+			// display: inline;
+			flex-direction: row;
+			align-items: center;
+
+			& > .itemMarker {
+				// background-color: cadetblue;
+				@include helpers.circle(2rem);
+				border-style: solid;
+				border-width: 0.1rem;
+				border-color: var(--menu-marker-hover-color);
+				color: var(--font-color-white);
+			}
+
+			&:global(.active) {
+				& > .itemMarker {
+					// background-color: yellow;
+					color: black;
+					background-color: var(--menu-marker-hover-color);
+					font-weight: bold;
+				}
+			}
+
+			& > .itemLabel {
+				// background-color: lightgray;
+				& > span:first-child {
+					color: var(--font-color-grey);
+				}
+				& > span:last-child {
+					color: var(--font-color-white);
+					font-weight: 500;
+				}
+
+				// mobile
+				@media screen and (width < $threshold-width) {
+					font-size: 0;
+					// @extend .visually-hidden;
+				}
+
+				// desktop
+				@media screen and (width >= $threshold-width) {
+					display: flex;
+					flex-direction: column;
+					margin-inline-start: 1rem;
+				}
+			}
+		}
+	}
+}
