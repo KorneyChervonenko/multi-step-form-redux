@@ -1,14 +1,19 @@
 import { useNavigate } from 'react-router';
-import '../index.scss';
+import '../../index.scss';
 import styles from './SelectPlan.module.scss';
-import { useFormContext } from '../contexts/FormContext';
+// import { useFormContext } from '../../contexts/FormContext';
 import classNames from 'classnames';
-import { CONFIG } from '../config.mjs';
-import PrevBtn from '../components/PrevBtn';
-import NextBtn from '../components/NextBtn';
+import { CONFIG } from '../../config.mjs';
+import PrevBtn from '../../components/PrevBtn';
+import NextBtn from '../../components/NextBtn';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { selectPlan, togglePeriod } from './SelectPlanSlice';
 
 export default function SelectPlan() {
-	const { isMonthly, dispatch } = useFormContext();
+	// const { isMonthly, dispatch } = useFormContext();
+	const dispatch = useDispatch();
+	const isMonthly = useSelector((store) => store.plan.isMonthly);
 	const navigate = useNavigate();
 
 	function handleSubmit(e) {
@@ -17,7 +22,8 @@ export default function SelectPlan() {
 	}
 
 	function onPeriodChange() {
-		dispatch({ type: 'switch period' });
+		// dispatch({ type: 'switch period' });
+		dispatch(togglePeriod());
 	}
 
 	return (
@@ -67,9 +73,14 @@ export default function SelectPlan() {
 function Plan({ planUrl, planData }) {
 	// eslint-disable-next-line react/prop-types
 	const { monthly, yearly, title } = planData;
-	const { isMonthly, plan, dispatch } = useFormContext();
+	// const { isMonthly, plan, dispatch } = useFormContext();
+	const isMonthly = useSelector((store) => store.plan.isMonthly);
+	const plan = useSelector((store) => store.plan.selectedPlan);
+	const dispatch = useDispatch();
+
 	function onPlanSelect(e) {
-		dispatch({ type: 'set plan', payload: e.target.value });
+		// dispatch({ type: 'set plan', payload: e.target.value });
+		dispatch(selectPlan(e.target.value));
 	}
 	return (
 		<label className={styles.label}>

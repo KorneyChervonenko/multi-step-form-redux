@@ -1,10 +1,14 @@
-import '../index.scss';
+import '../../index.scss';
 import styles from './PersonInfo.module.scss';
 import { useNavigate } from 'react-router';
-import { useFormContext } from '../contexts/FormContext';
+// import { useFormContext } from '../../contexts/FormContext';
 import classNames from 'classnames';
-import PrevBtn from '../components/PrevBtn';
-import NextBtn from '../components/NextBtn';
+import PrevBtn from '../../components/PrevBtn';
+import NextBtn from '../../components/NextBtn';
+
+import { useDispatch, useSelector } from 'react-redux';
+
+import { changeInput, updateErrorMessages } from './PersonInfoSlice';
 
 function validateForm(inputFields) {
 	//  { valueMissing: true, typeMismatch: false, patternMismatch: false, tooLong: false, tooShort: false,
@@ -42,12 +46,18 @@ function validateForm(inputFields) {
 
 export default function PersonInfo() {
 	const navigate = useNavigate();
-	const { person, personFormErrors, dispatch } = useFormContext();
+	// const { person, personFormErrors, dispatch } = useFormContext();
+	const dispatch = useDispatch();
+	const person = useSelector((store) => store.personInfo.person);
+	const personFormErrors = useSelector((store) => store.personInfo.personFormErrors);
 
 	// console.log(personFormErrors);
 
 	function handleChange(e) {
-		dispatch({ type: 'change input', payload: e.target });
+		// dispatch({ type: 'change input', payload: e.target });
+		// console.log([e.target.name, e.target.value]);
+		// dispatch(changeInput(e.target));
+		dispatch(changeInput([e.target.name, e.target.value]));
 	}
 
 	function handleSubmit(e) {
@@ -59,7 +69,8 @@ export default function PersonInfo() {
 			(element) => element.tagName === 'INPUT'
 		);
 		const errors = validateForm(inputFields);
-		dispatch({ type: 'update error messages', payload: errors });
+		// dispatch({ type: 'update error messages', payload: errors });
+		dispatch(updateErrorMessages(errors));
 		if (Object.keys(errors).length === 0) navigate('/select-plan');
 	}
 

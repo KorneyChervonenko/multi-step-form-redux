@@ -1,12 +1,15 @@
 import { useNavigate } from 'react-router';
 
-import '../index.scss';
+import '../../index.scss';
 import styles from './Addons.module.scss';
-import { useFormContext } from '../contexts/FormContext';
+// import { useFormContext } from '../../contexts/FormContext';
 import classNames from 'classnames';
-import { CONFIG } from '../config.mjs';
-import PrevBtn from '../components/PrevBtn';
-import NextBtn from '../components/NextBtn';
+import { CONFIG } from '../../config.mjs';
+import PrevBtn from '../../components/PrevBtn';
+import NextBtn from '../../components/NextBtn';
+
+import { toggleAddon } from './AddonsSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function Addons() {
 	const navigate = useNavigate();
@@ -45,12 +48,16 @@ export default function Addons() {
 
 // eslint-disable-next-line react/prop-types
 function Addon({ addonUrl, addonData }) {
-	const { isMonthly, addonStates, dispatch } = useFormContext();
+	const dispatch = useDispatch();
+	const isMonthly = useSelector((store) => store.plan.isMonthly);
+	const addonStates = useSelector((store) => store.addons.addonStates);
+
 	// eslint-disable-next-line react/prop-types
 	const { monthly, yearly, title, description } = addonData;
 
 	function onAddonSelect(e) {
-		dispatch({ type: 'select addon', payload: e.target.value });
+		// dispatch({ type: 'select addon', payload: e.target.value });
+		dispatch(toggleAddon(e.target.value));
 	}
 
 	return (

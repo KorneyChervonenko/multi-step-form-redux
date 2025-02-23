@@ -1,23 +1,26 @@
 // import { useState } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
 import Header from './components/Header.jsx';
-import PersonInfo from './pages/PersonInfo.jsx';
-import SelectPlan from './pages/SelectPlan.jsx';
-import Addons from './pages/Addons.jsx';
-import Summary from './pages/Summary.jsx';
-import Success from './pages/Success.jsx';
 import PageNav from './components/PageNav.jsx';
+
+import PersonInfo from './pages/PersonInfo/PersonInfo.jsx';
+import SelectPlan from './pages/SelectPlan/SelectPlan.jsx';
+import Addons from './pages/Addons/Addons.jsx';
+import Summary from './pages/Summary/Summary.jsx';
+import Success from './pages/Success/Success.jsx';
+
 import './App.scss';
-// import { FormContextProvider } from './contexts/FormContext.jsx';
-import { useFormContext } from './contexts/FormContext.jsx';
+// import { Provider } from 'react-redux';
+// import store from './store.js';
+import { useSelector } from 'react-redux';
 
 function App() {
-	const { isSuccessful } = useFormContext();
+	const isSuccessful = useSelector((store) => store.summary.isSuccessful);
+
 	return (
 		<div className="app">
 			<div className="main">
 				<Header />
-				{/* <FormContextProvider> */}
 				<BrowserRouter>
 					<PageNav />
 					<Routes>
@@ -29,7 +32,6 @@ function App() {
 						{/* <Route path="success" element={<Success />} /> */}
 					</Routes>
 				</BrowserRouter>
-				{/* </FormContextProvider> */}
 			</div>
 		</div>
 	);

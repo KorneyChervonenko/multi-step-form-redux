@@ -1,4 +1,4 @@
-import '../index.scss';
+import '../../index.scss';
 import styles from './Success.module.scss';
 import classNames from 'classnames';
 

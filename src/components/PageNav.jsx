@@ -1,7 +1,8 @@
-import { Link, NavLink, useNavigate } from 'react-router';
-import { useState, useEffect } from 'react';
+import { NavLink, useNavigate } from 'react-router';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
-import { useFormContext } from '../contexts/FormContext';
+// import { useFormContext } from '../contexts/FormContext';
 import styles from './PageNav.module.scss';
 
 export default function PageNav() {
@@ -12,7 +13,12 @@ export default function PageNav() {
 		{ title: 'SUMMARY', path: 'summary' },
 	];
 
-	const { isSuccessful, isMonthly, addonStates, dispatch } = useFormContext();
+	// const { isSuccessful, isMonthly, addonStates, dispatch } = useFormContext();
+
+	// const dispatch = useDispatch();
+	// const isMonthly = useSelector((store) => store.plan.isMonthly);
+	// const addonStates = useSelector((store) => store.addons.addonStates);
+	const isSuccessful = useSelector((store) => store.summary.isSuccessful);
 
 	const navigate = useNavigate();
 	useEffect(() => {

@@ -1,31 +1,45 @@
-import { useFormContext } from '../contexts/FormContext';
+// import { useFormContext } from '../../contexts/FormContext';
 import classNames from 'classnames';
-import '../index.scss';
+// import '../index.scss';
+import '../../index.scss';
 import styles from './Summary.module.scss';
-import { CONFIG } from '../config.mjs';
+import { CONFIG } from '../../config.mjs';
 
-import Success from './Success';
+// import Success from './Success';
+import Success from '../Success/Success';
 import { useNavigate } from 'react-router';
-import PrevBtn from '../components/PrevBtn';
-import NextBtn from '../components/NextBtn';
+import PrevBtn from '../../components/PrevBtn';
+import NextBtn from '../../components/NextBtn';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { togglePeriod } from '../SelectPlan/SelectPlanSlice';
+import { markSuccessful } from './SummarySlice';
 
 export default function Summary() {
-	const { isSuccessful, person, personFormErrors, isMonthly, plan, addonStates, dispatch } =
-		useFormContext();
-
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
+
+	// const person = useSelector((store) => store.personInfo.person);
+	const personFormErrors = useSelector((store) => store.personInfo.personFormErrors);
+	const isMonthly = useSelector((store) => store.plan.isMonthly);
+	const plan = useSelector((store) => store.plan.selectedPlan);
+	const addonStates = useSelector((store) => store.addons.addonStates);
+	const isSuccessful = useSelector((store) => store.summary.isSuccessful);
+
+	// const { isSuccessful, person, personFormErrors, isMonthly, plan, addonStates, dispatch } =
+	// 	useFormContext();
 
 	if (isSuccessful) return <Success />;
 
 	function handleSubmit(e) {
 		e.preventDefault();
-
-		if (Object.values(personFormErrors).length === 0) dispatch({ type: 'mark as successful' });
+		if (Object.values(personFormErrors).length === 0) dispatch(markSuccessful());
 		else navigate('/personal-info');
 	}
 
 	function onPeriodChange() {
-		dispatch({ type: 'switch period' });
+		// dispatch({ type: 'switch period' });
+		dispatch(togglePeriod());
 	}
 	const selectedAddons = Object.entries(CONFIG.addons).filter(
 		([addon, data]) => addonStates[addon]
@@ -88,7 +102,8 @@ export default function Summary() {
 
 // eslint-disable-next-line react/prop-types
 function TableRowAddon({ addonData }) {
-	const { isMonthly } = useFormContext();
+	// const { isMonthly } = useFormContext();
+	const isMonthly = useSelector((store) => store.plan.isMonthly);
 	// eslint-disable-next-line react/prop-types
 	const { monthly, yearly, title } = addonData;
 	return (
