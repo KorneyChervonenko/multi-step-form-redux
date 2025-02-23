@@ -10,6 +10,7 @@ import Success from '../Success/Success';
 import { useNavigate } from 'react-router';
 import PrevBtn from '../../components/PrevBtn';
 import NextBtn from '../../components/NextBtn';
+import PageNav from '../../components/PageNav.jsx';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { togglePeriod } from '../SelectPlan/SelectPlanSlice';
@@ -55,48 +56,51 @@ export default function Summary() {
 	// console.log(selectedPlan);
 
 	return (
-		<section className={styles.summary}>
-			<table className={classNames('form-area', styles.summaryTable)}>
-				<caption className={styles.tableCaption}>
-					<h2>Finishing up</h2>
-					<p className="plain-text">Double-check everything looks OK before confirming.</p>
-				</caption>
+		<>
+			<PageNav />
+			<section className={styles.summary}>
+				<table className={classNames('form-area', styles.summaryTable)}>
+					<caption className={styles.tableCaption}>
+						<h2>Finishing up</h2>
+						<p className="plain-text">Double-check everything looks OK before confirming.</p>
+					</caption>
 
-				<tbody className={styles.tableBody}>
-					<tr className={styles.tableRow}>
-						<th className={styles.tableRHplan} scope="row">
-							{selectedPlan.title} ({isMonthly ? 'Monthly' : 'Yearly'})
-							<label className={classNames(styles.label, 'plain-text')}>
-								{/* <label className={styles.label}> */}
-								Change
-								<input
-									className={styles.input}
-									type="checkbox"
-									checked={isMonthly}
-									onChange={onPeriodChange}
-								/>
-							</label>
-						</th>
-						<td>{isMonthly ? `$${selectedPlan.monthly}/mo` : `$${selectedPlan.yearly}/yr`}</td>
-					</tr>
+					<tbody className={styles.tableBody}>
+						<tr className={styles.tableRow}>
+							<th className={styles.tableRHplan} scope="row">
+								{selectedPlan.title} ({isMonthly ? 'Monthly' : 'Yearly'})
+								<label className={classNames(styles.label, 'plain-text')}>
+									{/* <label className={styles.label}> */}
+									Change
+									<input
+										className={styles.input}
+										type="checkbox"
+										checked={isMonthly}
+										onChange={onPeriodChange}
+									/>
+								</label>
+							</th>
+							<td>{isMonthly ? `$${selectedPlan.monthly}/mo` : `$${selectedPlan.yearly}/yr`}</td>
+						</tr>
 
-					{selectedAddons.map(([addonUrl, addonData]) => (
-						<TableRowAddon addonData={addonData} key={addonUrl} />
-					))}
-				</tbody>
+						{selectedAddons.map(([addonUrl, addonData]) => (
+							<TableRowAddon addonData={addonData} key={addonUrl} />
+						))}
+					</tbody>
 
-				<tfoot className={styles.tableFooter}>
-					<tr className={styles.tableRow}>
-						<th className="plain-text">Total (per {isMonthly ? 'month' : 'year'})</th>
-						<td>{isMonthly ? `+${totalMonthlyCost}$/mo` : `+${totalYearlyCost}$/yr`}</td>
-					</tr>
-				</tfoot>
-			</table>
-			<menu className="prev-next-buttons">
-				<PrevBtn />
-				<NextBtn handleClick={handleSubmit} />
-			</menu>
-		</section>
+					<tfoot className={styles.tableFooter}>
+						<tr className={styles.tableRow}>
+							<th className="plain-text">Total (per {isMonthly ? 'month' : 'year'})</th>
+							<td>{isMonthly ? `+${totalMonthlyCost}$/mo` : `+${totalYearlyCost}$/yr`}</td>
+						</tr>
+					</tfoot>
+				</table>
+				<menu className="prev-next-buttons">
+					<PrevBtn />
+					<NextBtn handleClick={handleSubmit} />
+				</menu>
+			</section>
+		</>
 	);
 }
 

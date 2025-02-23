@@ -9,6 +9,7 @@ import NextBtn from '../../components/NextBtn';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { selectPlan, togglePeriod } from './SelectPlanSlice';
+import PageNav from '../../components/PageNav.jsx';
 
 export default function SelectPlan() {
 	// const { isMonthly, dispatch } = useFormContext();
@@ -27,45 +28,48 @@ export default function SelectPlan() {
 	}
 
 	return (
-		<section className={styles.selectPlan}>
-			<form
-				className={classNames('form-area', styles.formSelectPlan)}
-				id="formPlanSelect"
-				// onSubmit={handleSubmit}
-			>
-				<header>
-					<h2>Select your plan</h2>
-					<p className="plain-text">You have the option of monthly or yearly billing.</p>
-				</header>
+		<>
+			<PageNav />
+			<section className={styles.selectPlan}>
+				<form
+					className={classNames('form-area', styles.formSelectPlan)}
+					id="formPlanSelect"
+					// onSubmit={handleSubmit}
+				>
+					<header>
+						<h2>Select your plan</h2>
+						<p className="plain-text">You have the option of monthly or yearly billing.</p>
+					</header>
 
-				<fieldset className={styles.fieldset}>
-					{Object.entries(CONFIG.plans).map(([planUrl, data]) => (
-						<Plan planUrl={planUrl} planData={data} key={planUrl} />
-					))}
-				</fieldset>
+					<fieldset className={styles.fieldset}>
+						{Object.entries(CONFIG.plans).map(([planUrl, data]) => (
+							<Plan planUrl={planUrl} planData={data} key={planUrl} />
+						))}
+					</fieldset>
 
-				<div className={styles.periodSwitch}>
-					{/* <span>Monthly</span> */}
-					<span className={isMonthly ? styles.selected : styles.deselected}>Monthly</span>
-					<label className={styles.switchLabel}>
-						<input
-							type="checkbox"
-							className={styles.periodSwitchInput}
-							checked={isMonthly}
-							onChange={onPeriodChange}
-						/>
-						<span className={styles.toggleLever}></span>
-					</label>
-					{/* <span>Yearly</span> */}
-					<span className={isMonthly ? styles.deselected : styles.selected}>Yearly</span>
-				</div>
-			</form>
+					<div className={styles.periodSwitch}>
+						{/* <span>Monthly</span> */}
+						<span className={isMonthly ? styles.selected : styles.deselected}>Monthly</span>
+						<label className={styles.switchLabel}>
+							<input
+								type="checkbox"
+								className={styles.periodSwitchInput}
+								checked={isMonthly}
+								onChange={onPeriodChange}
+							/>
+							<span className={styles.toggleLever}></span>
+						</label>
+						{/* <span>Yearly</span> */}
+						<span className={isMonthly ? styles.deselected : styles.selected}>Yearly</span>
+					</div>
+				</form>
 
-			<menu className="prev-next-buttons">
-				<PrevBtn />
-				<NextBtn bindForm="formPlanSelect" handleClick={handleSubmit} />
-			</menu>
-		</section>
+				<menu className="prev-next-buttons">
+					<PrevBtn />
+					<NextBtn bindForm="formPlanSelect" handleClick={handleSubmit} />
+				</menu>
+			</section>
+		</>
 	);
 }
 

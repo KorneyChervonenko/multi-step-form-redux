@@ -7,10 +7,10 @@ import styles from './PageNav.module.scss';
 
 export default function PageNav() {
 	const items = [
-		{ title: 'YOUR INFO', path: 'personal-info' },
-		{ title: 'SELECT PLAN', path: 'select-plan' },
-		{ title: 'ADD-ONS', path: 'add-ons' },
-		{ title: 'SUMMARY', path: 'summary' },
+		{ title: 'YOUR INFO', path: '/personal-info' },
+		{ title: 'SELECT PLAN', path: '/select-plan' },
+		{ title: 'ADD-ONS', path: '/add-ons' },
+		{ title: 'SUMMARY', path: '/summary' },
 	];
 
 	// const { isSuccessful, isMonthly, addonStates, dispatch } = useFormContext();
@@ -21,11 +21,12 @@ export default function PageNav() {
 	const isSuccessful = useSelector((store) => store.summary.isSuccessful);
 
 	const navigate = useNavigate();
-	useEffect(() => {
-		if (isSuccessful) {
-			navigate('/summary');
-		}
-	}, [isSuccessful, navigate]);
+	if (isSuccessful) navigate('/summary');
+	// useEffect(() => {
+	// 	if (isSuccessful) {
+	// 		navigate('/summary');
+	// 	}
+	// }, [isSuccessful, navigate]);
 
 	return (
 		<menu className={styles.pageMenu} role="menu">

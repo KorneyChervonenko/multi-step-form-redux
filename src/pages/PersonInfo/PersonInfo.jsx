@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router';
 import classNames from 'classnames';
 import PrevBtn from '../../components/PrevBtn';
 import NextBtn from '../../components/NextBtn';
+import PageNav from '../../components/PageNav.jsx';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -75,89 +76,92 @@ export default function PersonInfo() {
 	}
 
 	return (
-		<section className={styles.personInfo}>
-			<form
-				id="formPersonInfo"
-				className={classNames('form-area', styles.formPersonInfo)}
-				// onSubmit={handleSubmit}
-				noValidate
-			>
-				<header>
-					<h2>Personal info</h2>
-					<p className="plain-text">Please provide your name, email address, and phone number.</p>
-				</header>
-				<fieldset className={styles.fieldset}>
-					<label className={styles.label}>
-						<span className={styles.labelText}>
-							<span>Name</span>
-							<span className={styles.errMsg} id="name-err">
-								{personFormErrors['name']}
+		<>
+			<PageNav />
+			<section className={styles.personInfo}>
+				<form
+					id="formPersonInfo"
+					className={classNames('form-area', styles.formPersonInfo)}
+					// onSubmit={handleSubmit}
+					noValidate
+				>
+					<header>
+						<h2>Personal info</h2>
+						<p className="plain-text">Please provide your name, email address, and phone number.</p>
+					</header>
+					<fieldset className={styles.fieldset}>
+						<label className={styles.label}>
+							<span className={styles.labelText}>
+								<span>Name</span>
+								<span className={styles.errMsg} id="name-err">
+									{personFormErrors['name']}
+								</span>
 							</span>
-						</span>
-						<input
-							// className={styles.inputField}
-							className={`${styles.inputField} ${
-								personFormErrors['name']?.length > 0 && 'red-border'
-							}`}
-							value={person.name}
-							onChange={handleChange}
-							name="name"
-							type="text"
-							minLength="4"
-							placeholder="e.g. Stephen King"
-							aria-errormessage="name-err"
-							required
-						/>
-					</label>
-					<label className={styles.label}>
-						<span className={styles.labelText}>
-							<span>Email Address</span>
-							<span className={styles.errMsg} id="email-err">
-								{personFormErrors['email']}
+							<input
+								// className={styles.inputField}
+								className={`${styles.inputField} ${
+									personFormErrors['name']?.length > 0 && 'red-border'
+								}`}
+								value={person.name}
+								onChange={handleChange}
+								name="name"
+								type="text"
+								minLength="4"
+								placeholder="e.g. Stephen King"
+								aria-errormessage="name-err"
+								required
+							/>
+						</label>
+						<label className={styles.label}>
+							<span className={styles.labelText}>
+								<span>Email Address</span>
+								<span className={styles.errMsg} id="email-err">
+									{personFormErrors['email']}
+								</span>
 							</span>
-						</span>
-						<input
-							// className={styles.inputField}
-							className={`${styles.inputField} ${
-								personFormErrors['email']?.length > 0 && 'red-border'
-							}`}
-							value={person.email}
-							onChange={handleChange}
-							name="email"
-							type="email"
-							placeholder="e.g. stephenking@lorem.com"
-							aria-errormessage="email-err"
-							required
-						/>
-					</label>
-					<label className={styles.label}>
-						<span className={styles.labelText}>
-							<span>Phone Number</span>
-							<span className={styles.errMsg} id="phone-err">
-								{personFormErrors['tel']}
+							<input
+								// className={styles.inputField}
+								className={`${styles.inputField} ${
+									personFormErrors['email']?.length > 0 && 'red-border'
+								}`}
+								value={person.email}
+								onChange={handleChange}
+								name="email"
+								type="email"
+								placeholder="e.g. stephenking@lorem.com"
+								aria-errormessage="email-err"
+								required
+							/>
+						</label>
+						<label className={styles.label}>
+							<span className={styles.labelText}>
+								<span>Phone Number</span>
+								<span className={styles.errMsg} id="phone-err">
+									{personFormErrors['tel']}
+								</span>
 							</span>
-						</span>
-						<input
-							// className={styles.inputField}
-							className={`${styles.inputField} ${
-								personFormErrors['tel']?.length > 0 && 'red-border'
-							}`}
-							value={person.tel}
-							onChange={handleChange}
-							name="tel"
-							type="tel"
-							placeholder="e.g. +1 234 567 890"
-							pattern="\+[0-9]{1} [0-9]{3} [0-9]{3} [0-9]{3}"
-							aria-errormessage="phone-err"
-							required
-						/>
-					</label>
-				</fieldset>
-			</form>
-			<menu className="prev-next-buttons">
-				<PrevBtn />
-				<NextBtn bindForm="formPersonInfo" handleClick={handleSubmit} />
-			</menu>
-		</section>
+							<input
+								// className={styles.inputField}
+								className={`${styles.inputField} ${
+									personFormErrors['tel']?.length > 0 && 'red-border'
+								}`}
+								value={person.tel}
+								onChange={handleChange}
+								name="tel"
+								type="tel"
+								placeholder="e.g. +1 234 567 890"
+								pattern="\+[0-9]{1} [0-9]{3} [0-9]{3} [0-9]{3}"
+								aria-errormessage="phone-err"
+								required
+							/>
+						</label>
+					</fieldset>
+				</form>
+				<menu className="prev-next-buttons">
+					<PrevBtn />
+					<NextBtn bindForm="formPersonInfo" handleClick={handleSubmit} />
+				</menu>
+			</section>
+		</>
 	);
 }

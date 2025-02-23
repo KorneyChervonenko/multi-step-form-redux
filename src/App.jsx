@@ -1,7 +1,7 @@
 // import { useState } from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
+import { createBrowserRouter, RouterProvider, redirect } from 'react-router';
 import Header from './components/Header.jsx';
-import PageNav from './components/PageNav.jsx';
+// import PageNav from './components/PageNav.jsx';
 
 import PersonInfo from './pages/PersonInfo/PersonInfo.jsx';
 import SelectPlan from './pages/SelectPlan/SelectPlan.jsx';
@@ -13,15 +13,28 @@ import './App.scss';
 // import { Provider } from 'react-redux';
 // import store from './store.js';
 import { useSelector } from 'react-redux';
+// const isSuccessful = useSelector((store) => store.summary.isSuccessful);
+
+// const router = createBrowserRouter([
+// 	{ path: 'personal-info', element: isSuccessful ? <Success /> : <PersonInfo /> },
+// ]);
 
 function App() {
 	const isSuccessful = useSelector((store) => store.summary.isSuccessful);
+	const router = createBrowserRouter([
+		{ path: '/', loader: () => redirect('personal-info') },
+		{ path: 'personal-info', element: isSuccessful ? <Success /> : <PersonInfo /> },
+		{ path: 'select-plan', element: isSuccessful ? <Success /> : <SelectPlan /> },
+		{ path: 'add-ons', element: isSuccessful ? <Success /> : <Addons /> },
+		{ path: 'summary', element: isSuccessful ? <Success /> : <Summary /> },
+	]);
 
 	return (
 		<div className="app">
 			<div className="main">
 				<Header />
-				<BrowserRouter>
+				<RouterProvider router={router} />
+				{/* <BrowserRouter>
 					<PageNav />
 					<Routes>
 						<Route index element={<Navigate replace to="personal-info" />} />
@@ -29,9 +42,8 @@ function App() {
 						<Route path="select-plan" element={isSuccessful ? <Success /> : <SelectPlan />} />
 						<Route path="add-ons" element={isSuccessful ? <Success /> : <Addons />} />
 						<Route path="summary" element={isSuccessful ? <Success /> : <Summary />} />
-						{/* <Route path="success" element={<Success />} /> */}
 					</Routes>
-				</BrowserRouter>
+				</BrowserRouter> */}
 			</div>
 		</div>
 	);

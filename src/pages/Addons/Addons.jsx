@@ -10,6 +10,7 @@ import NextBtn from '../../components/NextBtn';
 
 import { toggleAddon } from './AddonsSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import PageNav from '../../components/PageNav.jsx';
 
 export default function Addons() {
 	const navigate = useNavigate();
@@ -20,29 +21,32 @@ export default function Addons() {
 	}
 
 	return (
-		<section className={styles.addons}>
-			<form
-				className={classNames('form-area', styles.addonsChecklist)}
-				id="formAddonsSelect"
-				// onSubmit={onSubmitCall}
-			>
-				<header>
-					<h2>Pick add-ons</h2>
-					<p className="plain-text">Add-ons help enhance your gaming experiance.</p>
-				</header>
+		<>
+			<PageNav />
+			<section className={styles.addons}>
+				<form
+					className={classNames('form-area', styles.addonsChecklist)}
+					id="formAddonsSelect"
+					// onSubmit={onSubmitCall}
+				>
+					<header>
+						<h2>Pick add-ons</h2>
+						<p className="plain-text">Add-ons help enhance your gaming experiance.</p>
+					</header>
 
-				<fieldset className={styles.fieldset}>
-					{Object.entries(CONFIG.addons).map(([addonUrl, data]) => (
-						<Addon addonUrl={addonUrl} addonData={data} key={addonUrl} />
-					))}
-				</fieldset>
-			</form>
+					<fieldset className={styles.fieldset}>
+						{Object.entries(CONFIG.addons).map(([addonUrl, data]) => (
+							<Addon addonUrl={addonUrl} addonData={data} key={addonUrl} />
+						))}
+					</fieldset>
+				</form>
 
-			<menu className="prev-next-buttons">
-				<PrevBtn />
-				<NextBtn bindForm="formAddonsSelect" handleClick={handleSubmit} />
-			</menu>
-		</section>
+				<menu className="prev-next-buttons">
+					<PrevBtn />
+					<NextBtn bindForm="formAddonsSelect" handleClick={handleSubmit} />
+				</menu>
+			</section>
+		</>
 	);
 }
 
