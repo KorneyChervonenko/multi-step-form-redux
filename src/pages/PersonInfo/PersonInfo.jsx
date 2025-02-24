@@ -1,15 +1,16 @@
-import '../../index.scss';
-import styles from './PersonInfo.module.scss';
 import { useNavigate } from 'react-router';
-// import { useFormContext } from '../../contexts/FormContext';
+import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
+
+// import { useFormContext } from '../../contexts/FormContext';
+import PageNav from '../../components/PageNav.jsx';
 import PrevBtn from '../../components/PrevBtn';
 import NextBtn from '../../components/NextBtn';
-import PageNav from '../../components/PageNav.jsx';
-
-import { useDispatch, useSelector } from 'react-redux';
 
 import { changeInput, updateErrorMessages } from './PersonInfoSlice';
+
+import '../../index.scss';
+import styles from './PersonInfo.module.scss';
 
 function validateForm(inputFields) {
 	//  { valueMissing: true, typeMismatch: false, patternMismatch: false, tooLong: false, tooShort: false,

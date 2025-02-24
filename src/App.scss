@@ -4,7 +4,7 @@
 
 .app {
 	@extend .full-space;
-	background-color: cadetblue;
+	// background-color: cadetblue;
 	background-color: var(--Pastel-blue);
 	display: flex;
 	flex-direction: column;
@@ -12,22 +12,10 @@
 	justify-content: center;
 
 	& > .main {
+		display: flex;
 		// mobile
 		@media screen and (width < $threshold-width) {
 			background-color: var(--main-bg-color-mobile);
-		}
-
-		// desktop
-		@media screen and (width >= $threshold-width) {
-			justify-content: center;
-			background-color: var(--main-bg-color-desktop);
-			border-radius: var(--border-radius-big);
-		}
-		// background-color: rebeccapurple;
-		display: flex;
-
-		// mobile
-		@media screen and (width < $threshold-width) {
 			inline-size: $mobile-width;
 			block-size: fit-content;
 			flex-direction: column;
@@ -35,10 +23,29 @@
 
 		// desktop
 		@media screen and (width >= $threshold-width) {
+			justify-content: center;
+			background-color: var(--main-bg-color-desktop);
+			border-radius: var(--border-radius-big);
 			inline-size: $desktop-width;
 			block-size: 37.5rem;
 			padding: 1rem;
 			flex-direction: row;
+		}
+		// background-color: rebeccapurple;
+
+		// mobile
+		@media screen and (width < $threshold-width) {
+			// inline-size: $mobile-width;
+			// block-size: fit-content;
+			// flex-direction: column;
+		}
+
+		// desktop
+		@media screen and (width >= $threshold-width) {
+			// inline-size: $desktop-width;
+			// block-size: 37.5rem;
+			// padding: 1rem;
+			// flex-direction: row;
 		}
 	}
 }

@@ -1,5 +1,4 @@
-import { NavLink, useNavigate } from 'react-router';
-import { useEffect } from 'react';
+import { NavLink } from 'react-router';
 import { useSelector } from 'react-redux';
 
 // import { useFormContext } from '../contexts/FormContext';
@@ -13,26 +12,14 @@ export default function PageNav() {
 		{ title: 'SUMMARY', path: '/summary' },
 	];
 
-	// const { isSuccessful, isMonthly, addonStates, dispatch } = useFormContext();
-
-	// const dispatch = useDispatch();
-	// const isMonthly = useSelector((store) => store.plan.isMonthly);
-	// const addonStates = useSelector((store) => store.addons.addonStates);
 	const isSuccessful = useSelector((store) => store.summary.isSuccessful);
-
-	const navigate = useNavigate();
-	if (isSuccessful) navigate('/summary');
-	// useEffect(() => {
-	// 	if (isSuccessful) {
-	// 		navigate('/summary');
-	// 	}
-	// }, [isSuccessful, navigate]);
 
 	return (
 		<menu className={styles.pageMenu} role="menu">
 			{items.map((item, index) => (
 				<li className={styles.item} key={item.title} role="none">
-					<NavLink to={item.path} className={styles.pageLink} role="menuitem">
+					{/* <NavLink to={item.path} className={styles.pageLink} role="menuitem"> */}
+					<NavLink to={isSuccessful ? '' : item.path} className={styles.pageLink} role="menuitem">
 						<div className={styles.itemMarker}>{index + 1}</div>
 						<div className={styles.itemLabel} aria-label={`step ${index + 1}: ${item.title}`}>
 							<span>STEP {index + 1}</span>

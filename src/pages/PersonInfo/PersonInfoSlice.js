@@ -1,21 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initPersonData = {
-	name: 'Stephen King',
-	email: 'stephenking@lorem.com',
-	tel: '+1 234 567 890',
-};
+// const initPersonData = {
+// 	name: 'Stephen King',
+// 	email: 'stephenking@lorem.com',
+// 	tel: '+1 234 567 890',
+// };
 
 const initErrors = {
 	name: 'This field is required',
 	email: 'This field is required',
 	tel: 'This field is required',
 };
-// const initPersonData = {
-// 	name: '',
-// 	email: '',
-// 	tel: '',
-// };
+
+const initPersonData = {
+	name: '',
+	email: '',
+	tel: '',
+};
 
 const initialState = {
 	person: { ...initPersonData },

@@ -1,20 +1,21 @@
 // import { useFormContext } from '../../contexts/FormContext';
+import { useNavigate } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+
 import classNames from 'classnames';
 // import '../index.scss';
-import '../../index.scss';
-import styles from './Summary.module.scss';
 import { CONFIG } from '../../config.mjs';
 
-// import Success from './Success';
+import PageNav from '../../components/PageNav.jsx';
 import Success from '../Success/Success';
-import { useNavigate } from 'react-router';
 import PrevBtn from '../../components/PrevBtn';
 import NextBtn from '../../components/NextBtn';
-import PageNav from '../../components/PageNav.jsx';
 
-import { useDispatch, useSelector } from 'react-redux';
 import { togglePeriod } from '../SelectPlan/SelectPlanSlice';
 import { markSuccessful } from './SummarySlice';
+
+import '../../index.scss';
+import styles from './Summary.module.scss';
 
 export default function Summary() {
 	const navigate = useNavigate();

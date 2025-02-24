@@ -1,16 +1,18 @@
 import { useNavigate } from 'react-router';
-
-import '../../index.scss';
-import styles from './Addons.module.scss';
-// import { useFormContext } from '../../contexts/FormContext';
+import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
+
+// import { useFormContext } from '../../contexts/FormContext';
 import { CONFIG } from '../../config.mjs';
+
+import PageNav from '../../components/PageNav.jsx';
 import PrevBtn from '../../components/PrevBtn';
 import NextBtn from '../../components/NextBtn';
 
 import { toggleAddon } from './AddonsSlice';
-import { useDispatch, useSelector } from 'react-redux';
-import PageNav from '../../components/PageNav.jsx';
+
+import '../../index.scss';
+import styles from './Addons.module.scss';
 
 export default function Addons() {
 	const navigate = useNavigate();

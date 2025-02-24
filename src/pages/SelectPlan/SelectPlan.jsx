@@ -1,15 +1,17 @@
 import { useNavigate } from 'react-router';
-import '../../index.scss';
-import styles from './SelectPlan.module.scss';
-// import { useFormContext } from '../../contexts/FormContext';
+import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
+
+// import { useFormContext } from '../../contexts/FormContext';
 import { CONFIG } from '../../config.mjs';
+import PageNav from '../../components/PageNav.jsx';
 import PrevBtn from '../../components/PrevBtn';
 import NextBtn from '../../components/NextBtn';
-import { useDispatch, useSelector } from 'react-redux';
 
 import { selectPlan, togglePeriod } from './SelectPlanSlice';
-import PageNav from '../../components/PageNav.jsx';
+
+import '../../index.scss';
+import styles from './SelectPlan.module.scss';
 
 export default function SelectPlan() {
 	// const { isMonthly, dispatch } = useFormContext();
